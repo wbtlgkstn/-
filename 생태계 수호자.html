@@ -19,7 +19,6 @@ body{
   min-height:100vh; padding:16px;
 }
 
-/* ── 공통 ── */
 .card{
   background:var(--card); border-radius:20px; padding:20px;
   box-shadow:var(--shadow); border:1.5px solid var(--border);
@@ -45,7 +44,7 @@ body{
 }
 .role-btn .rb-icon{ font-size:28px; }
 .role-btn .rb-name{ font-size:14px; color:#374151; }
-.role-btn:hover{ border-color:#4ade80; background:#f0fdf4; transform:translateY(-2px); box-shadow:0 4px 12px rgba(74,222,128,0.2); }
+.role-btn:hover{ border-color:#4ade80; background:#f0fdf4; transform:translateY(-2px); }
 .role-btn.selected{ border-color:#16a34a; background:#dcfce7; }
 .role-btn.selected .rb-name{ color:#15803d; }
 .role-btn.teacher{ grid-column:1/-1; flex-direction:row; justify-content:center; gap:10px; padding:13px; }
@@ -55,10 +54,9 @@ body{
   width:100%; padding:15px; border-radius:14px; border:none;
   background:linear-gradient(135deg,#16a34a,#4ade80); color:white;
   font-family:'Jua',sans-serif; font-size:18px; cursor:pointer;
-  box-shadow:0 4px 14px rgba(22,163,74,0.35); transition:all 0.15s;
-  margin-top:4px;
+  box-shadow:0 4px 14px rgba(22,163,74,0.35); transition:all 0.15s; margin-top:4px;
 }
-.btn-enter:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(22,163,74,0.45); }
+.btn-enter:hover{ transform:translateY(-1px); }
 .btn-enter:disabled{ opacity:0.45; cursor:not-allowed; transform:none; }
 .login-hint{
   margin-top:14px; padding:12px; background:#f0fdf4;
@@ -89,7 +87,6 @@ body{
   padding:8px 14px; border-radius:10px; border:1.5px solid #e5e7eb;
   background:white; font-size:13px; cursor:pointer; color:#6b7280;
 }
-.btn-logout:hover{ background:#f9fafb; }
 .protect-badge{
   display:none; background:#eff6ff; border:1.5px solid #93c5fd;
   border-radius:50px; padding:6px 14px; font-size:13px; color:#1d4ed8;
@@ -128,7 +125,7 @@ body{
 .chip-cnt{ font-family:'Jua',sans-serif; font-size:22px; color:#15803d; }
 .chip-cnt small{ font-size:13px; color:#6b7280; font-family:'Nanum Gothic',sans-serif; }
 
-/* 내 팀 코인 조작 */
+/* 코인 조작 */
 .coins-row{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:8px; }
 .cgrp{ display:flex; flex-direction:column; align-items:center; gap:3px; }
 .clbl{ font-size:10px; color:#6b7280; }
@@ -145,6 +142,7 @@ body{
 .cdisc.c-yellow{ background:linear-gradient(135deg,#f59e0b,#d97706); }
 .cdisc.c-green { background:linear-gradient(135deg,#22c55e,#16a34a); }
 .cdisc.c-pink  { background:linear-gradient(135deg,#ec4899,#db2777); }
+
 .cbtn{
   width:20px; height:20px; border-radius:50%; border:1.5px solid #d1d5db;
   background:white; cursor:pointer; font-size:13px;
@@ -155,7 +153,7 @@ body{
 .cbtn:active{ transform:scale(0.88); }
 .cbtn:disabled{ opacity:0.3; cursor:not-allowed; }
 
-/* 다른 팀 — 색상 pill */
+/* 다른 팀 pill */
 .pills{ display:flex; flex-wrap:wrap; gap:5px; margin-top:6px; }
 .pill{
   display:flex; align-items:center; gap:3px; padding:3px 8px;
@@ -187,12 +185,10 @@ body{
 .gbtn:active{ transform:scale(0.96); }
 .gbtn:disabled{ opacity:0.4; cursor:not-allowed; }
 .gbtn-start{ background:linear-gradient(135deg,#16a34a,#4ade80); color:white; grid-column:1/-1; font-size:17px; padding:14px; }
-.gbtn-start:hover{ box-shadow:0 4px 14px rgba(22,163,74,0.4); }
 .gbtn-next{ background:linear-gradient(135deg,#3b82f6,#06b6d4); color:white; }
-.gbtn-next:hover{ box-shadow:0 4px 12px rgba(59,130,246,0.4); }
 .gbtn-reset{ background:white; color:#6b7280; border:1.5px solid #e5e7eb; }
 
-/* 주사위 이벤트 */
+/* ── 주사위 이벤트 (모든 학생 공용) ── */
 .dice-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:5px; margin-bottom:10px; }
 .dbtn{
   aspect-ratio:1; border-radius:10px; border:2px solid #e5e7eb; background:white;
@@ -202,27 +198,33 @@ body{
 }
 .dbtn:hover{ border-color:#4ade80; background:#f0fdf4; transform:translateY(-2px); }
 .dbtn:active{ transform:scale(0.93); }
+.dbtn:disabled{ opacity:0.35; cursor:not-allowed; transform:none; }
 .dbtn .di{ font-size:14px; }
 .dbtn .ds{ font-size:7.5px; color:#6b7280; text-align:center; line-height:1.1; }
 .dbtn.plus{ border-color:#86efac; background:#f0fdf4; }
 .dbtn.minus{ border-color:#fca5a5; background:#fef2f2; }
 
 .event-box{
-  border-radius:12px; padding:12px; text-align:center; min-height:70px;
+  border-radius:12px; padding:14px; text-align:center; min-height:90px;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   background:#f9fafb; border:1.5px dashed #d1d5db; transition:all 0.3s;
 }
 .event-box.plus{ background:#f0fdf4; border:2px solid #4ade80; animation:pop 0.4s ease; }
 .event-box.minus{ background:#fef2f2; border:2px solid #f87171; animation:pop 0.4s ease; }
-.event-box.neutral{ background:#eff6ff; border:2px solid #93c5fd; animation:pop 0.4s ease; }
-.ev-emoji{ font-size:22px; margin-bottom:3px; }
-.ev-title{ font-family:'Jua',sans-serif; font-size:14px; color:#1f2937; margin-bottom:3px; }
-.ev-eff{ font-size:12px; color:#4b5563; line-height:1.4; }
+.ev-emoji{ font-size:24px; margin-bottom:4px; }
+.ev-title{ font-family:'Jua',sans-serif; font-size:14px; color:#1f2937; margin-bottom:4px; }
+.ev-eff{
+  font-size:13px; font-family:'Jua',sans-serif;
+  padding:4px 12px; border-radius:20px; margin-bottom:4px;
+}
+.ev-eff.plus{ background:#dcfce7; color:#15803d; }
+.ev-eff.minus{ background:#fee2e2; color:#dc2626; }
+.ev-desc{ font-size:11px; color:#6b7280; line-height:1.4; }
 
-/* 학생 안내 */
-.guide-box{
-  font-size:13px; color:#4b5563; line-height:1.9;
-  background:#f0fdf4; border-radius:10px; padding:12px;
+/* 이벤트 안내 박스 */
+.event-guide{
+  background:#fffbeb; border:1.5px solid #fde68a; border-radius:10px;
+  padding:10px 12px; font-size:12px; color:#92400e; line-height:1.7; margin-top:8px;
 }
 
 /* 변수 이벤트 */
@@ -274,22 +276,19 @@ body{
 .btn-close{
   margin-top:14px; padding:12px 28px; background:linear-gradient(135deg,#16a34a,#4ade80);
   color:white; border:none; border-radius:50px; font-family:'Jua',sans-serif;
-  font-size:17px; cursor:pointer; box-shadow:0 4px 14px rgba(22,163,74,0.4);
-  transition:all 0.2s;
+  font-size:17px; cursor:pointer; box-shadow:0 4px 14px rgba(22,163,74,0.4); transition:all 0.2s;
 }
-.btn-close:hover{ transform:translateY(-2px); }
 
-/* 애니메이션 */
-@keyframes pop{ 0%{ transform:scale(0.95); opacity:0.7; } 60%{ transform:scale(1.03); } 100%{ transform:scale(1); opacity:1; } }
-@keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.5; } }
-@keyframes dotBlink{ 0%,100%{ opacity:1; } 50%{ opacity:0.2; } }
+@keyframes pop{ 0%{transform:scale(0.95);opacity:0.7;} 60%{transform:scale(1.03);} 100%{transform:scale(1);opacity:1;} }
+@keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+@keyframes dotBlink{ 0%,100%{opacity:1;} 50%{opacity:0.2;} }
 .spinner{ display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,0.4); border-top-color:white; border-radius:50%; animation:spin 0.6s linear infinite; vertical-align:middle; }
-@keyframes spin{ to{ transform:rotate(360deg); } }
+@keyframes spin{ to{transform:rotate(360deg);} }
 </style>
 </head>
 <body>
 
-<!-- ══ 로그인 ══════════════════════════════════════════════ -->
+<!-- ══ 로그인 ══ -->
 <div id="loginScreen">
   <div class="login-logo">
     <div style="font-size:52px">🌿</div>
@@ -297,35 +296,21 @@ body{
     <p>우리 생태계를 지켜라!</p>
   </div>
   <div class="card">
-    <div class="card-title">👥 내 역할을 선택하세요</div>
+    <div class="card-title">👥 내 모둠을 선택하세요</div>
     <div class="role-grid">
-      <button class="role-btn" onclick="selectRole('1모둠')">
-        <div class="rb-icon">🦁</div><div class="rb-name">1모둠</div>
-      </button>
-      <button class="role-btn" onclick="selectRole('2모둠')">
-        <div class="rb-icon">🐬</div><div class="rb-name">2모둠</div>
-      </button>
-      <button class="role-btn" onclick="selectRole('3모둠')">
-        <div class="rb-icon">🦋</div><div class="rb-name">3모둠</div>
-      </button>
-      <button class="role-btn" onclick="selectRole('4모둠')">
-        <div class="rb-icon">🐺</div><div class="rb-name">4모둠</div>
-      </button>
-      <button class="role-btn" onclick="selectRole('5모둠')">
-        <div class="rb-icon">🦊</div><div class="rb-name">5모둠</div>
-      </button>
-      <button class="role-btn teacher" onclick="selectRole('선생님')">
-        <div class="rb-icon">👩‍🏫</div><div class="rb-name">선생님 (관리자)</div>
-      </button>
+      <button class="role-btn" onclick="selectRole('1모둠')"><div class="rb-icon">🦁</div><div class="rb-name">1모둠</div></button>
+      <button class="role-btn" onclick="selectRole('2모둠')"><div class="rb-icon">🐬</div><div class="rb-name">2모둠</div></button>
+      <button class="role-btn" onclick="selectRole('3모둠')"><div class="rb-icon">🦋</div><div class="rb-name">3모둠</div></button>
+      <button class="role-btn" onclick="selectRole('4모둠')"><div class="rb-icon">🐺</div><div class="rb-name">4모둠</div></button>
+      <button class="role-btn" onclick="selectRole('5모둠')"><div class="rb-icon">🦊</div><div class="rb-name">5모둠</div></button>
+      <button class="role-btn teacher" onclick="selectRole('선생님')"><div class="rb-icon">👩‍🏫</div><div class="rb-name">선생님 (관리자)</div></button>
     </div>
-    <button class="btn-enter" id="btnEnter" onclick="doEnter()" disabled>
-      입장하기 →
-    </button>
-    <div class="login-hint">버튼 하나만 누르면 바로 입장! 비밀번호 없이 사용합니다.</div>
+    <button class="btn-enter" id="btnEnter" onclick="doEnter()" disabled>입장하기 →</button>
+    <div class="login-hint">버튼 하나만 누르면 바로 입장!</div>
   </div>
 </div>
 
-<!-- ══ 메인 ════════════════════════════════════════════════ -->
+<!-- ══ 메인 ══ -->
 <div id="mainScreen">
   <div class="top-bar">
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
@@ -339,7 +324,7 @@ body{
   </div>
 
   <div class="main-grid">
-    <!-- 왼쪽 -->
+    <!-- 왼쪽: 팀 현황 + 로그 -->
     <div>
       <div class="card" style="margin-bottom:14px;">
         <div class="card-title">🌱 모둠별 생물 칩 현황</div>
@@ -354,33 +339,33 @@ body{
     <!-- 오른쪽 -->
     <div class="right-panel">
 
-      <!-- 선생님 전용 -->
+      <!-- 선생님 전용: 라운드 제어 -->
       <div class="card" id="teacherCtrl" style="display:none;">
-        <div class="card-title">⚙️ 게임 진행</div>
+        <div class="card-title">⚙️ 게임 진행 (선생님)</div>
         <div class="ctrl-grid">
           <button class="gbtn gbtn-start" id="btnStart" onclick="cmdStart()">🌿 게임 시작!</button>
           <button class="gbtn gbtn-next"  id="btnNext"  onclick="cmdNext()" disabled>➡ 다음 라운드</button>
           <button class="gbtn gbtn-reset"               onclick="cmdReset()">🔄 초기화</button>
         </div>
-      </div>
-
-      <div class="card" id="diceCtrl" style="display:none;">
-        <div class="card-title">🎲 주사위 이벤트 발동</div>
-        <div class="dice-grid" id="diceGrid"></div>
-        <div class="event-box" id="eventBox">
-          <div style="font-size:13px;color:#9ca3af;">주사위 합 버튼을 누르세요</div>
+        <div style="margin-top:10px;font-size:12px;color:#6b7280;background:#f9fafb;border-radius:8px;padding:8px 10px;line-height:1.7;">
+          💡 선생님은 라운드 진행만 담당해요.<br>
+          주사위 이벤트 확인과 코인 조절은 각 모둠이 직접 해요!
         </div>
       </div>
 
-      <!-- 학생 안내 -->
-      <div class="card" id="studentInfo" style="display:none;">
-        <div class="card-title">📢 게임 진행 순서</div>
-        <div class="guide-box">
-          1️⃣ 주사위 2개를 굴려요<br>
-          2️⃣ 나온 합을 선생님께 알려주세요<br>
-          3️⃣ 이벤트 결과를 확인해요<br>
-          4️⃣ 내 팀의 코인을 조절하세요<br>
-          5️⃣ 선생님이 다음 라운드로 넘어가요
+      <!-- 모든 학생: 주사위 이벤트 확인 -->
+      <div class="card" id="diceSection">
+        <div class="card-title">🎲 주사위 이벤트 확인</div>
+        <div style="font-size:12px;color:#6b7280;margin-bottom:10px;">
+          주사위 2개를 굴리고 나온 합의 버튼을 눌러 이벤트를 확인하세요!
+        </div>
+        <div class="dice-grid" id="diceGrid"></div>
+        <div class="event-box" id="eventBox">
+          <div style="font-size:13px;color:#9ca3af;">주사위 합 버튼을 눌러 이벤트 확인</div>
+        </div>
+        <div class="event-guide" id="eventGuide" style="display:none;">
+          📌 이벤트를 확인했으면 왼쪽에서 <b>내 모둠 코인</b>을 직접 조절해주세요!<br>
+          어떤 색 코인을 늘리고 줄일지는 모둠끼리 의논하세요 😊
         </div>
       </div>
 
@@ -388,9 +373,9 @@ body{
       <div class="card">
         <div class="card-title">⚡ 돌발 변수 이벤트</div>
         <div class="var-box" id="varBox">
-          <div class="var-title"  id="varTitle">—</div>
+          <div class="var-title"   id="varTitle">—</div>
           <div class="var-content" id="varContent">—</div>
-          <div class="var-msg"    id="varMsg">—</div>
+          <div class="var-msg"     id="varMsg">—</div>
         </div>
         <div class="var-placeholder" id="varPlaceholder">짝수 라운드가 끝나면 돌발 변수가 발동됩니다!</div>
       </div>
@@ -411,39 +396,39 @@ body{
 </div>
 
 <script>
-// ══ ⚠️  아래 URL을 Apps Script 배포 URL로 교체하세요! ════════
+// ══ ⚠️  배포 URL을 여기에 붙여넣으세요! ══════════════════════
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzWEBK5obtVubWq30CCNJPPIbFrohnUYZ8yICBbb5iprlJCLQI5jKOEXJJH2pxKCVhK/exec";
 // ════════════════════════════════════════════════════════════
 
-const COLORS  = ["red","blue","purple","yellow","green","pink"];
-const COLOR_KO= {red:"빨강",blue:"파랑",purple:"보라",yellow:"노랑",green:"초록",pink:"분홍"};
-const ICONS   = {"1모둠":"🦁","2모둠":"🐬","3모둠":"🦋","4모둠":"🐺","5모둠":"🦊","선생님":"👩‍🏫"};
-const TEAMS_LIST = ["1모둠","2모둠","3모둠","4모둠","5모둠"];
+const COLORS   = ["red","blue","purple","yellow","green","pink"];
+const COLOR_KO = {red:"빨강",blue:"파랑",purple:"보라",yellow:"노랑",green:"초록",pink:"분홍"};
+const ICONS    = {"1모둠":"🦁","2모둠":"🐬","3모둠":"🦋","4모둠":"🐺","5모둠":"🦊","선생님":"👩‍🏫"};
 
 const DICE_EVENTS = [
-  {sum:2, emoji:'✨',name:'생물 다양성의 기적',    eff:'+5개',type:'plus'},
-  {sum:3, emoji:'🌳',name:'국립공원 지정',         eff:'+3개',type:'plus'},
-  {sum:4, emoji:'🛡️',name:'밀렵 감시단 활동',     eff:'+1개',type:'plus'},
-  {sum:5, emoji:'🚜',name:'소규모 개발',            eff:'-1개',type:'minus'},
-  {sum:6, emoji:'⚠️',name:'외래종 등장',           eff:'-2개',type:'minus'},
-  {sum:7, emoji:'🔥',name:'기후 위기',             eff:'-3개',type:'minus'},
-  {sum:8, emoji:'📉',name:'서식지 파편화',          eff:'-2개',type:'minus'},
-  {sum:9, emoji:'🏭',name:'공장 폐수 유입',         eff:'-1개',type:'minus'},
-  {sum:10,emoji:'🌿',name:'환경 정화 캠페인',       eff:'+1개',type:'plus'},
-  {sum:11,emoji:'🐾',name:'생태 통로 건설',         eff:'+2개',type:'plus'},
-  {sum:12,emoji:'🌟',name:'대규모 복원 사업',       eff:'+4개',type:'plus'},
+  {sum:2,  emoji:'✨', name:'생물 다양성의 기적',    eff:'+5개', desc:'멸종 위기종들이 기적으로 살아납니다!',     type:'plus'},
+  {sum:3,  emoji:'🌳', name:'국립공원 지정',          eff:'+3개', desc:'국가에서 땅을 보호구역으로 정했습니다.',   type:'plus'},
+  {sum:4,  emoji:'🛡️', name:'밀렵 감시단 활동',      eff:'+1개', desc:'불법 사냥을 막아 동물을 지켰습니다.',     type:'plus'},
+  {sum:5,  emoji:'🚜', name:'소규모 개발',             eff:'-1개', desc:'숲의 일부가 깎여 나갔습니다.',           type:'minus'},
+  {sum:6,  emoji:'⚠️', name:'외래종 등장',            eff:'-2개', desc:'외래종이 토종을 위협합니다.',             type:'minus'},
+  {sum:7,  emoji:'🔥', name:'기후 위기 (가장 흔함)',  eff:'-3개', desc:'지구 온난화로 생태계가 큰 타격을 입습니다.',type:'minus'},
+  {sum:8,  emoji:'📉', name:'서식지 파편화',           eff:'-2개', desc:'도로가 뚫려 동물들이 이동할 수 없습니다.',type:'minus'},
+  {sum:9,  emoji:'🏭', name:'공장 폐수 유입',          eff:'-1개', desc:'강물이 오염되어 물고기들이 병듭니다.',   type:'minus'},
+  {sum:10, emoji:'🌿', name:'환경 정화 캠페인',        eff:'+1개', desc:'시민들이 힘을 합쳐 쓰레기를 치웠습니다.',type:'plus'},
+  {sum:11, emoji:'🐾', name:'생태 통로 건설',          eff:'+2개', desc:'끊어진 산길을 다리로 연결했습니다.',     type:'plus'},
+  {sum:12, emoji:'🌟', name:'대규모 복원 사업',        eff:'+4개', desc:'사라졌던 핵심 종을 다시 방사했습니다!',  type:'plus'},
 ];
+
 const VAR_EVENTS = [
-  {title:'🌡️ 이상 고온 현상',      content:'보라색 식물들이 시들었습니다.\n효과: 모든 모둠의 보라색 코인 전부 제거.',         msg:'특정 온도에만 적응한 종은 급격한 기후 변화에 가장 먼저 희생됩니다.'},
-  {title:'🐝 꿀벌 실종 사건',      content:'꿀벌이 사라져 꽃 피우는 종들이 번식에 실패합니다.\n효과: 홀수→노란색 전부 제거 / 짝수→분홍색 전부 제거.',  msg:'한 종이 사라지면 다른 종들도 줄지어 사라집니다.'},
-  {title:'🌊 해수면 상승과 침수',   content:'파란색 종들만 무사합니다!\n효과: 파란색 제외 모든 색 코인 1개씩 제거.',          msg:'환경에 적응한 종만이 살아남습니다.'},
-  {title:'🐛 독버섯의 습격',       content:'치명적인 곰팡이 독소가 퍼졌습니다.\n효과: 모든 모둠 녹색 코인 2개 제거.',          msg:'먹이 사슬의 기초가 타격받으면 생태계 전체가 흔들립니다.'},
-  {title:'🧬 유전적 다양성 보너스', content:'환경이 안정적입니다!\n효과: 5가지 색 모두 보유한 모둠에 녹색 코인 2개 추가.',    msg:'다양한 종이 골고루 섞인 생태계가 훨씬 건강합니다.'},
-  {title:'⚡ 대형 산불 발생',      content:'산불이 걷잡을 수 없이 번졌습니다!\n효과: 모든 모둠 칩 5개 제거. (5개 미만이면 1개 남김)',  msg:'기후 변화로 건조해진 숲은 작은 불씨에도 무너집니다.'},
-  {title:'🧬 신종 바이러스 습격',  content:'야생동물 사이에서 전염병이 돕니다.\n효과: 각 모둠 주사위 굴림. 홀수→칩 -3개, 짝수→칩 -1개.',msg:'종 다양성이 낮을수록 전염병에 취약합니다.'},
-  {title:'💰 대기업의 생태 복원 후원',content:'대기업이 거액을 기부했습니다!\n효과: 칩이 가장 적은 하위 2팀에게 각 4개씩 지급.',msg:'사회적 후원은 멸종 직전의 생태계를 살리는 큰 힘입니다.'},
-  {title:"🛣️ 그린 브릿지 완공",   content:'도로로 단절됐던 산등성이에 생태 통로 완성!\n효과: 이후 8(서식지 파편화) 피해 영구 면제.',msg:'인간의 기술은 생태계를 파괴할 수도, 연결할 수도 있습니다.'},
-  {title:'🌍 국제 생물다양성 협약', content:'전 세계가 이 지역을 보호구역으로 관리하기로 했습니다.\n효과: 다음 3라운드 마이너스 이벤트 피해 절반.',msg:'환경 보호는 전 지구적인 약속이 필요합니다.'},
+  {title:'🌡️ 이상 고온 현상',       content:'보라색 식물들이 시들었습니다.\n효과: 모든 모둠의 보라색 코인 전부 제거.',          msg:'특정 온도에만 적응한 종은 급격한 기후 변화에 가장 먼저 희생됩니다.'},
+  {title:'🐝 꿀벌 실종 사건',        content:'꿀벌이 사라져 꽃 피우는 종들이 번식에 실패합니다.\n효과: 홀수→노란색 전부 제거 / 짝수→분홍색 전부 제거.', msg:'한 종이 사라지면 다른 종들도 줄지어 사라집니다.'},
+  {title:'🌊 해수면 상승과 침수',     content:'파란색 종들만 무사합니다!\n효과: 파란색 제외 모든 색 코인 1개씩 제거.',           msg:'환경에 적응한 종만이 살아남습니다.'},
+  {title:'🐛 독버섯의 습격',          content:'치명적인 곰팡이 독소가 퍼졌습니다.\n효과: 모든 모둠 녹색 코인 2개 제거.',          msg:'먹이 사슬의 기초가 타격받으면 생태계 전체가 흔들립니다.'},
+  {title:'🧬 유전적 다양성 보너스',   content:'환경이 안정적입니다!\n효과: 5가지 색 모두 보유한 모둠에 녹색 코인 2개 추가.',    msg:'다양한 종이 골고루 섞인 생태계가 훨씬 건강합니다.'},
+  {title:'⚡ 대형 산불 발생',         content:'산불이 걷잡을 수 없이 번졌습니다!\n효과: 모든 모둠 칩 5개 제거. (5개 미만이면 1개 남김)', msg:'기후 변화로 건조해진 숲은 작은 불씨에도 무너집니다.'},
+  {title:'🧬 신종 바이러스 습격',     content:'야생동물 사이에서 전염병이 돕니다.\n효과: 각 모둠 주사위 굴림. 홀수→칩 -3개, 짝수→칩 -1개.', msg:'종 다양성이 낮을수록 전염병에 취약합니다.'},
+  {title:'💰 대기업의 생태 복원 후원',content:'대기업이 거액을 기부했습니다!\n효과: 칩이 가장 적은 하위 2팀에게 각 4개씩 지급.', msg:'사회적 후원은 멸종 직전의 생태계를 살리는 큰 힘입니다.'},
+  {title:"🛣️ 그린 브릿지 완공",      content:'도로로 단절됐던 산등성이에 생태 통로 완성!\n효과: 이후 8(서식지 파편화) 피해 영구 면제.', msg:'인간의 기술은 생태계를 파괴할 수도, 연결할 수도 있습니다.'},
+  {title:'🌍 국제 생물다양성 협약',   content:'전 세계가 이 지역을 보호구역으로 관리하기로 했습니다.\n효과: 다음 3라운드 마이너스 이벤트 피해 절반.', msg:'환경 보호는 전 지구적인 약속이 필요합니다.'},
 ];
 
 // ── 상태 ──
@@ -465,13 +450,9 @@ function doEnter() {
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('mainScreen').style.display  = 'block';
   document.getElementById('whoBadge').textContent = `${me.icon} ${me.team}`;
-
   const isTeacher = me.team === '선생님';
-  document.getElementById('teacherCtrl').style.display  = isTeacher ? 'block' : 'none';
-  document.getElementById('diceCtrl').style.display     = isTeacher ? 'block' : 'none';
-  document.getElementById('studentInfo').style.display  = isTeacher ? 'none'  : 'block';
-  if (isTeacher) buildDiceGrid();
-
+  document.getElementById('teacherCtrl').style.display = isTeacher ? 'block' : 'none';
+  buildDiceGrid();
   startPolling();
   fetchState();
 }
@@ -483,6 +464,11 @@ function logout() {
   document.getElementById('loginScreen').style.display = 'block';
   document.getElementById('btnEnter').disabled = true;
   document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('selected'));
+  // 이벤트 박스 초기화
+  const eb = document.getElementById('eventBox');
+  eb.className = 'event-box';
+  eb.innerHTML = '<div style="font-size:13px;color:#9ca3af;">주사위 합 버튼을 눌러 이벤트 확인</div>';
+  document.getElementById('eventGuide').style.display = 'none';
 }
 
 // ── API ──
@@ -508,7 +494,11 @@ async function fetchState() {
 // ── 렌더 ──
 function renderState(s) {
   document.getElementById('roundTxt').textContent = `Round ${s.round}`;
-  if (s.started) { const n = document.getElementById('btnNext'); if(n) n.disabled = false; }
+  const btnNext = document.getElementById('btnNext');
+  if (btnNext) btnNext.disabled = !s.started;
+
+  // 주사위 버튼 활성/비활성
+  document.querySelectorAll('.dbtn').forEach(b => b.disabled = !s.started);
 
   const pb = document.getElementById('protectBadge');
   if (s.treatyLeft > 0) {
@@ -528,7 +518,6 @@ function renderState(s) {
     card.setAttribute('data-t', idx);
 
     if (isMe || isTeacher) {
-      // 코인 조작 가능
       const targetTeam = isTeacher ? team.name : me.team;
       card.innerHTML = `
         ${isMe ? '<div class="mine-tag">내 모둠 ✓</div>' : ''}
@@ -551,7 +540,6 @@ function renderState(s) {
         <div class="extinct-warn" style="${total<=0?'display:block':'display:none'}">☠️ 생태계 멸종 위기!</div>
       `;
     } else {
-      // 총 개수 + 색별 pill만
       card.innerHTML = `
         <div class="team-hd">
           <div class="team-name">${ICONS[team.name]||''} ${team.name}</div>
@@ -576,24 +564,18 @@ function renderState(s) {
     logList.appendChild(d);
   });
 
-  // 변수 이벤트 감지
   checkVarEvent(s);
-
-  // 게임 종료
   if (s.started && s.round >= 10) showGameOver(s.teams);
 }
 
 function checkVarEvent(s) {
   const lastVar = [...(s.log||[])].reverse().find(e => e.type === 'var');
-  if (!lastVar) return;
-  if (lastVar.text === prevVarKey) return;
+  if (!lastVar || lastVar.text === prevVarKey) return;
   prevVarKey = lastVar.text;
-
   const m = lastVar.text.match(/#(\d+)/);
   if (!m) return;
   const idx = parseInt(m[1]) - 1;
   if (idx < 0 || idx >= VAR_EVENTS.length) return;
-
   const ev = VAR_EVENTS[idx];
   document.getElementById('varPlaceholder').style.display = 'none';
   const box = document.getElementById('varBox');
@@ -605,9 +587,37 @@ function checkVarEvent(s) {
 
 // ── 코인 조작 ──
 async function adjCoin(team, color, delta) {
-  if (!me) return;
+  if (!me || !gState.started) return;
   await api({ action:'updateCoins', team, color, delta });
   fetchState();
+}
+
+// ── 주사위 이벤트 (모든 학생 공용 — 서버 차감 없음) ──
+function buildDiceGrid() {
+  const grid = document.getElementById('diceGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  DICE_EVENTS.forEach(ev => {
+    const btn = document.createElement('button');
+    btn.className = `dbtn ${ev.type}`;
+    btn.disabled = true; // 게임 시작 전엔 비활성
+    btn.innerHTML = `<div class="di">${ev.emoji}</div><div class="di" style="font-size:13px;font-weight:bold;">${ev.sum}</div><div class="ds">${ev.name.split(' ').slice(0,2).join(' ')}</div>`;
+    btn.onclick = () => showDiceEvent(ev);
+    grid.appendChild(btn);
+  });
+}
+
+function showDiceEvent(ev) {
+  const box = document.getElementById('eventBox');
+  box.className = `event-box ${ev.type}`;
+  box.innerHTML = `
+    <div class="ev-emoji">${ev.emoji}</div>
+    <div class="ev-title">${ev.name}</div>
+    <div class="ev-eff ${ev.type}">${ev.eff}</div>
+    <div class="ev-desc">${ev.desc}</div>
+  `;
+  // 안내 메시지 표시
+  document.getElementById('eventGuide').style.display = 'block';
 }
 
 // ── 선생님 명령 ──
@@ -627,8 +637,11 @@ async function cmdNext() {
   btn.disabled = true; btn.textContent = '⏳ 처리 중...';
   await api({ action:'nextRound', team:'선생님' });
   btn.textContent = '➡ 다음 라운드'; btn.disabled = false;
+  // 이벤트 박스 초기화
   const eb = document.getElementById('eventBox');
-  if (eb) { eb.className='event-box'; eb.innerHTML='<div style="font-size:13px;color:#9ca3af;">주사위 합 버튼을 누르세요</div>'; }
+  eb.className = 'event-box';
+  eb.innerHTML = '<div style="font-size:13px;color:#9ca3af;">주사위 합 버튼을 눌러 이벤트 확인</div>';
+  document.getElementById('eventGuide').style.display = 'none';
   fetchState();
 }
 
@@ -641,34 +654,10 @@ async function cmdReset() {
   fetchState();
 }
 
-// ── 주사위 그리드 ──
-function buildDiceGrid() {
-  const grid = document.getElementById('diceGrid');
-  if (!grid) return;
-  grid.innerHTML = '';
-  DICE_EVENTS.forEach(ev => {
-    const btn = document.createElement('button');
-    btn.className = `dbtn ${ev.type}`;
-    btn.innerHTML = `<div class="di">${ev.emoji}</div><div class="di" style="font-size:13px;font-weight:bold;">${ev.sum}</div><div class="ds">${ev.name.split(' ').slice(0,2).join(' ')}</div>`;
-    btn.onclick = () => triggerDice(ev);
-    grid.appendChild(btn);
-  });
-}
-
-const DICE_DESC = {2:'멸종 위기종들이 기적으로 살아납니다.',3:'국가에서 땅을 보호구역으로 정했습니다.',4:'불법 사냥을 막아 동물을 지켰습니다.',5:'숲의 일부가 깎여 나갔습니다.',6:'외래종이 토종을 위협합니다.',7:'지구 온난화로 생태계가 큰 타격을 입습니다.',8:'도로가 뚫려 동물들이 이동할 수 없습니다.',9:'강물이 오염되어 물고기들이 병듭니다.',10:'시민들이 힘을 합쳐 쓰레기를 치웠습니다.',11:'끊어진 산길을 다리로 연결했습니다.',12:'사라졌던 핵심 종을 다시 방사하는 데 성공했습니다.'};
-
-async function triggerDice(ev) {
-  const box = document.getElementById('eventBox');
-  box.className = `event-box ${ev.type}`;
-  box.innerHTML = `<div class="ev-emoji">${ev.emoji}</div><div class="ev-title">${ev.name}</div><div class="ev-eff">${ev.eff} — ${DICE_DESC[ev.sum]}</div>`;
-  await api({ action:'applyEvent', team:'선생님', eventId:ev.sum });
-  fetchState();
-}
-
 // ── 게임 종료 ──
 function showGameOver(teams) {
   const sorted = [...teams]
-    .map(t=>({...t, total:COLORS.reduce((a,c)=>a+(t.coins[c]||0),0)}))
+    .map(t=>({...t,total:COLORS.reduce((a,c)=>a+(t.coins[c]||0),0)}))
     .sort((a,b)=>b.total-a.total);
   const cls = ['r1','r2','r3','r4','r5'];
   const med = ['🥇','🥈','🥉','4위','5위'];
